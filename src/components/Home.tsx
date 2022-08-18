@@ -1,35 +1,33 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { io } from 'socket.io-client';
-
+import { getApiWrapper } from '../util/apiUtil';
+import TopBar from './TopBar';
+import '../styles/home.css';
+import '../styles/shared.css';
+import CollectionModal from './CollectionModal';
 
 const webSocket = io(`${process.env.REACT_APP_POND_WS_URL}`, {
     withCredentials: true,
 });
 
-function Home(props: any) {
+interface HomeProps {}
+
+function Home(props: HomeProps) {
     const [fish, setFish] = useState<any | null>(null);
     const [isConnected, setIsConnected] = useState(webSocket.connected);
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [username, setUsername] = useState('');
     const [exp, setExp] = useState(0);
+    const [showCollection, setShowCollection] = useState(false);
     const [location, setLocation] = useState('');
-
-    function getApiWrapper(endpoint: string, func: (data: any) => void) {
-        fetch(`${process.env.REACT_APP_POND_API_URL}${endpoint}`, {
-            method: 'get',
-            credentials: 'include'
-        })
-            .then((res: any) => res.json())
-            .then(func)
-            .catch((err) => {
-                console.log(err);
-            });
-    }
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (!isConnected) {
             getApiWrapper('/auth/good/', (data: any) => {
-                setIsLoggedIn(data.authenticated)
+                if (!data.authenticated) {
+                    navigate('login');
+                }
             });
             
             getApiWrapper('/user/', (data: any) => {
@@ -58,10 +56,10 @@ function Home(props: any) {
                     // and when a new fish is recieved.
                     setTimeout(() => {
                         setFish(null);
-                    }, millisecondsFishable);
-                              
+                        document.title = 'Pond';
+                    }, millisecondsFishable);                            
                     setFish(newFish);
-                    
+                    document.title = 'New Fish!';          
                 } else {
                     setFish(null);
                 }            
@@ -76,32 +74,26 @@ function Home(props: any) {
     }, []);
 
     function collectFish() {
-        webSocket.emit('collect-fish', fish);
-        setExp(exp + fish.expRewarded);
-        alert(`You caught a ${fish.name} and gained ${fish.expRewarded} exp!`);
-        setFish(null);
+        if (fish) {
+            webSocket.emit('collect-fish', fish);
+            setExp(exp + fish.expRewarded);
+            alert(`You caught a ${fish.name} and gained ${fish.expRewarded} exp!`);
+            setFish(null);
+            document.title = 'Pond';
+        }     
     }
 
     return (
-        <div> 
-            <div>
-                <a href='http://127.0.0.1:5000/auth/google'> Log in </a>
-                { isLoggedIn ? (
-                    <h1> user id: {username} is logged in! </h1>
-                ) : (<h1> You are not logged in! </h1>)}
+        <div className='home-container'> 
+            <TopBar isConnected={isConnected} setShowCollection={setShowCollection}/>
+            <CollectionModal show={showCollection} setShowCollection={setShowCollection}/>
+
+            <div className='fishing-container'>
+                <div style={{backgroundColor:fish ? 'red' : 'black'}} onClick={collectFish} className='fishing-box'> 
+                    
+                </div>
             </div>
-            <div>
-                <h1> Is Connected: {isConnected.toString()}</h1>
-            </div>
-            <div>
-                <h1>exp: {exp}</h1>
-            </div>
-            <div>
-                {fish ? (
-                    <button onClick={collectFish}> Fish here! </button>
-                ) : (<h1> No Fish Here </h1>)}
-                <h1> Data: {fish ? fish.name : 'no fish'} </h1>
-            </div>
+
             
         </div>
     );

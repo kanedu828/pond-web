@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'Sen';
+    src: local('Sen'), url('../assets/fonts/Sen-Regular.ttf');
+  }
+  
+  body, input, textarea, button {
+    color: #414147;
+    background-color: #98b5c4;
+    font-family: 'Sen';
+  }

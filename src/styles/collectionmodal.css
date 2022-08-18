@@ -1,0 +1,25 @@
+.modal-container {
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    background: white;
+    align-self: center;
+}
+
+/* .modal-main {
+    position:fixed;
+    background: white;
+    width: 80%;
+    height: auto;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+} */
+  
+.display-block {
+display: block;
+}
+
+.display-none {
+display: none;
+}
