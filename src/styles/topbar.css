@@ -1,18 +1,23 @@
 .topbar-container {
-    background-color: rgb(50, 70, 82);
+    background-image: url('../assets/images/textures/wood-texture.jpg');
+    /* background-color: rgb(95, 76, 68); */
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     width: 100%;
     height: 50px;
+    border-radius: 5px;
 }
 
 .topbar-button {
-    background-color: rgb(119, 84, 84);
-    color: black;
+    background-color: rgb(202, 162, 125);
+    border: none;
+    color: rgb(122, 238, 118);
     margin: 0px 5px 0px 5px;
     width: 100px;
-    font-weight: 2000;
+    font-weight: bold;
+    font-size: 15px;
+    border-radius: 10px;
 }
 
 .topbar-logout {
@@ -21,5 +26,5 @@
 
 .connection-status {
     margin: auto 5px auto 5px;
-    color: white;
+    color: rgb(122, 238, 118);
 }

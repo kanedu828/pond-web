@@ -29,7 +29,7 @@ function Home(props: HomeProps) {
                     navigate('login');
                 }
             });
-            
+       
             getApiWrapper('/user/', (data: any) => {
                 setUsername(data.username);
                 setExp(data.exp);
