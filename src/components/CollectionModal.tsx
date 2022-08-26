@@ -30,7 +30,8 @@ export default function CollectionModal(props: CollectionModalProps) {
                 <ul>
                     {userFish.map((element) => (
                         <li>
-                            Fish Id: { element.id } <br />
+                            Fish Id: { element.fishId } <br />
+                            Fish Name: { element.name } <br />
                             Fish Count: { element.count } <br />
                             Fish Max Length: { element.length }
                         </li>
