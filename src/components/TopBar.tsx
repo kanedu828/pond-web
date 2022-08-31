@@ -2,41 +2,34 @@ import React, { useEffect } from 'react';
 import '../styles/topbar.css';
 import '../styles/shared.css';
 import { getApiWrapper } from '../util/apiUtil';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
+import homeIcon from '../assets/images/icons/home.svg';
+import logoutIcon from '../assets/images/icons/log-out.svg';
+import fishIcon from '../assets/images/icons/fish.svg';
+
 
 
 interface TopBarProps {
-    isConnected: boolean,
-    setShowCollection: React.Dispatch<React.SetStateAction<boolean>>,
 }
 
 export default function TopBar(props: TopBarProps) {
     const navigate = useNavigate();
 
-
     function logOut() {
         getApiWrapper('/auth/logout/', (data: any) => {});
-        navigate('login');
-    }
-
-    function showCollection() {
-        props.setShowCollection(true);
     }
 
     return (
         <div className='topbar-container'>
-            <button onClick={showCollection} className='topbar-button'>
-                Collection
-            </button>
-            <button className='topbar-button'>
-                Friends
-            </button>
-            <div className='connection-status'>
-                Connected to Server: {props.isConnected.toString()}
-            </div>
-            <button onClick={logOut} className='topbar-button topbar-logout'>
-                Log out
-            </button>
+            <NavLink className='topbar-button' to='/'>
+                <img className='topbar-icon' src={homeIcon}/>
+            </NavLink>
+            <NavLink className='topbar-button' to='/collection'>
+                <img className='topbar-icon' src={fishIcon}/>
+            </NavLink>
+            <NavLink onClick={logOut} className='topbar-button' to='/login'>
+                <img className='topbar-icon' src={logoutIcon}/>
+            </NavLink>
         </div>
     );
 }

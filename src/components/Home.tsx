@@ -5,7 +5,8 @@ import { getApiWrapper } from '../util/apiUtil';
 import TopBar from './TopBar';
 import '../styles/home.css';
 import '../styles/shared.css';
-import CollectionModal from './CollectionModal';
+import Collection from './Collection';
+import FishModal from './FishModal';
 
 const webSocket = io(`${process.env.REACT_APP_POND_WS_URL}`, {
     withCredentials: true,
@@ -18,12 +19,11 @@ function Home(props: HomeProps) {
     const [isConnected, setIsConnected] = useState(webSocket.connected);
     const [username, setUsername] = useState('');
     const [exp, setExp] = useState(0);
-    const [showCollection, setShowCollection] = useState(false);
+    const [showFishModal, setShowFishModal] = useState(false);
     const [location, setLocation] = useState('');
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (!isConnected) {
             getApiWrapper('/auth/good/', (data: any) => {
                 if (!data.authenticated) {
                     navigate('login');
@@ -69,25 +69,32 @@ function Home(props: HomeProps) {
                 webSocket.off('connect');
                 webSocket.off('disconnect');
                 webSocket.off('new-fish');
-            }; 
-        }      
+            };   
     }, []);
 
     function collectFish() {
         if (fish) {
             webSocket.emit('collect-fish', fish);
             setExp(exp + fish.expRewarded);
-            alert(`You caught a ${fish.name} and gained ${fish.expRewarded} exp!`);
-            setFish(null);
+            // alert(`You caught a ${fish.name} and gained ${fish.expRewarded} exp!`);
+            setShowFishModal(true);
             document.title = 'Pond';
         }     
     }
 
-    return (
-        <div className='home-container'> 
-            <TopBar isConnected={isConnected} setShowCollection={setShowCollection}/>
-            <CollectionModal show={showCollection} setShowCollection={setShowCollection}/>
+    function finishCollectFish() {
+        setShowFishModal(false);
+        setFish(null);
+    }
 
+    return (
+        <div className='home-container'>
+            <FishModal 
+                isOpen={showFishModal}
+                onRequestClose={finishCollectFish}
+                fish={fish}
+            />    
+            <div>Is Connected: {isConnected.toString()}</div>
             <div className='fishing-container'>
                 <div style={{backgroundColor:fish ? 'red' : 'black'}} onClick={collectFish} className='fishing-box'> 
                     

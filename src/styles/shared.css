@@ -5,6 +5,8 @@
   
   body, input, textarea, button {
     color: #414147;
-    background-color: #98b5c4;
+    background-color: #FAFAFA;
     font-family: 'Sen';
+    margin: 0;
+    padding: 0;
   }

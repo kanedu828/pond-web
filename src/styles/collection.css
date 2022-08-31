@@ -1,0 +1,17 @@
+.collection-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.fish {
+    background-color: #ECE2D0;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+}
+
+.fish-image {
+    width: 300px;
+    height: auto;
+}

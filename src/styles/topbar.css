@@ -1,30 +1,32 @@
 .topbar-container {
-    background-image: url('../assets/images/textures/wood-texture.jpg');
-    /* background-color: rgb(95, 76, 68); */
+    background-color: #63768D;
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-    width: 100%;
+    justify-content: center;
     height: 50px;
-    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
 }
 
 .topbar-button {
-    background-color: rgb(202, 162, 125);
     border: none;
-    color: rgb(122, 238, 118);
-    margin: 0px 5px 0px 5px;
-    width: 100px;
+    color: black;
+    margin: auto 30px auto 30px;
     font-weight: bold;
     font-size: 15px;
     border-radius: 10px;
 }
 
-.topbar-logout {
-    margin-left: auto;
-}
-
 .connection-status {
     margin: auto 5px auto 5px;
     color: rgb(122, 238, 118);
+}
+
+.topbar-icon {
+    height: 35px;
+    width: auto;
+}
+
+.active {
+    background-color: #554971;
 }
