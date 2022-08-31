@@ -5,7 +5,10 @@
     justify-content: center;
     height: 50px;
     margin-bottom: 10px;
+    top: 0;
     padding: 10px;
+    position: fixed;
+    width: 100vw;
 }
 
 .topbar-button {

@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { io } from 'socket.io-client';
 import { getApiWrapper } from '../util/apiUtil';
-import TopBar from './TopBar';
 import '../styles/home.css';
 import '../styles/shared.css';
-import Collection from './Collection';
 import FishModal from './FishModal';
+import { motion } from 'framer-motion';
+import alertIcon from '../assets/images/icons/alert.svg';
 
 const webSocket = io(`${process.env.REACT_APP_POND_WS_URL}`, {
     withCredentials: true,
@@ -95,10 +95,22 @@ function Home(props: HomeProps) {
                 fish={fish}
             />    
             <div>Is Connected: {isConnected.toString()}</div>
-            <div className='fishing-container'>
-                <div style={{backgroundColor:fish ? 'red' : 'black'}} onClick={collectFish} className='fishing-box'> 
-                    
-                </div>
+            <div onClick={collectFish} className='fishing-container'>
+                {fish ?
+                    <motion.div
+                        animate={{
+                            scale: [1, 1.2, 1],
+                        }}
+                        transition={{
+                            repeat: Infinity,
+                            duration: 1.3,
+                            ease: 'easeInOut'
+                        }}
+                     >
+                        <img className='fishing-alert' src={alertIcon} />
+                    </motion.div> : <></>
+                }
+                
             </div>
 
             
