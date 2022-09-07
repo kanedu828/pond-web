@@ -22,13 +22,13 @@ export default function TopBar(props: TopBarProps) {
     return (
         <div className='topbar-container'>
             <NavLink className='topbar-button' to='/'>
-                <img className='topbar-icon' src={homeIcon}/>
+                Fishing
             </NavLink>
             <NavLink className='topbar-button' to='/collection'>
-                <img className='topbar-icon' src={fishIcon}/>
+                Collection
             </NavLink>
             <NavLink onClick={logOut} className='topbar-button' to='/login'>
-                <img className='topbar-icon' src={logoutIcon}/>
+                Logout
             </NavLink>
         </div>
     );
