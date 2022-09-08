@@ -28,9 +28,7 @@ function Home() {
     });
 
     getApiWrapper('/user/', (data: any) => {
-      setUsername(data.username);
       setExp(data.exp);
-      setLocation(data.location);
     });
 
     webSocket.on('connect', () => {
