@@ -2,7 +2,7 @@ import React from 'react';
 import TopBar from './TopBar';
 import { Outlet } from 'react-router';
 
-export default () => {
+const WithNav = () => {
   return (
     <>
       <TopBar />
@@ -10,3 +10,5 @@ export default () => {
     </>
   );
 };
+
+export default WithNav;

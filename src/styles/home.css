@@ -1,17 +1,17 @@
 .fishing-container {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
 }
 
 .fishing-box {
-    background-color: rgb(217, 240, 240);
-    width: 500px;
-    height: 500px;
+  background-color: rgb(217, 240, 240);
+  width: 500px;
+  height: 500px;
 }
 
 .fishing-alert {
-    width: 100px;
-    height: auto;
+  width: 100px;
+  height: auto;
 }

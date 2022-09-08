@@ -1,18 +1,18 @@
 .collection-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .fish {
-    background-color: #ECE2D0;
-    padding: 20px;
-    margin: 20px;
-    border-radius: 10px;
+  background-color: #ece2d0;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 10px;
 }
 
 .fish-image {
-    width: 300px;
-    height: auto;
+  width: 300px;
+  height: auto;
 }

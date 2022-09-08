@@ -1,37 +1,39 @@
 .topbar-container {
-    background-color: #63768D;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    height: 50px;
-    margin-bottom: 10px;
-    top: 0;
-    padding: 10px;
-    position: fixed;
-    width: 100vw;
+  background-color: #a6b7cc;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 50px;
+  margin-bottom: 10px;
+  top: 0;
+  padding: 10px;
+  position: fixed;
+  width: 100vw;
 }
 
 .topbar-button {
-    border: none;
-    color: black;
-    margin: auto 30px auto 30px;
-    font-weight: bold;
-    font-size: 15px;
-    border-radius: 10px;
-    padding: 17px;
-    text-decoration: none;
+  border: none;
+  color: black;
+  margin: auto 30px auto 30px;
+  font-size: 20px;
+  padding: 8px;
+  text-decoration: none;
+}
+
+.topbar-button:hover {
+  background-color: #3b4f68;
 }
 
 .connection-status {
-    margin: auto 5px auto 5px;
-    color: rgb(122, 238, 118);
+  margin: auto 5px auto 5px;
+  color: rgb(122, 238, 118);
 }
 
 .topbar-icon {
-    height: 35px;
-    width: auto;
+  height: 35px;
+  width: auto;
 }
 
 .active {
-    background-color: #554971;
+  border-bottom: 5px solid #1e344e;
 }
