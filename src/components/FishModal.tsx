@@ -17,7 +17,7 @@ function CaughtFish(props: CaughtFishProps) {
     <div className="caught-fish-container">
       <img
         className="fish-image"
-        src={require('../assets/images/fish/default_fish.png')}
+        src={require(`../assets/images/fish/${props.fish.name.toLowerCase().replaceAll(' ', '_')}.png`)}
         alt="No Fish Image Available"
       ></img>
       <h3>{props.fish ? props.fish.name : null}</h3>
@@ -29,18 +29,23 @@ function CaughtFish(props: CaughtFishProps) {
 }
 
 export default function FishModal(props: FishModalProps) {
-  return (
-    <ReactModal
-      isOpen={props.isOpen}
-      shouldCloseOnOverlayClick={false}
-      className="fish-modal-container"
-      preventScroll={false}
-    >
-      <CaughtFish fish={props.fish} />
-      <button className="catch-fish-button" onClick={props.onRequestClose}>
-        {' '}
-        Catch Fish!{' '}
-      </button>
-    </ReactModal>
-  );
+  if (props.fish) {
+    return (
+      <ReactModal
+        isOpen={props.isOpen}
+        shouldCloseOnOverlayClick={false}
+        className="fish-modal-container"
+        preventScroll={false}
+      >
+        <CaughtFish fish={props.fish} />
+        <button className="catch-fish-button" onClick={props.onRequestClose}>
+          {' '}
+          Catch Fish!{' '}
+        </button>
+      </ReactModal>
+    );
+  } else {
+    return (<></>);
+  }
+  
 }

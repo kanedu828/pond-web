@@ -18,6 +18,7 @@ function Home() {
   const [exp, setExp] = useState(0);
   const [showFishModal, setShowFishModal] = useState(false);
   const navigate = useNavigate();
+  const [fishTimeoutId, setFishTimeoutId] = useState(-1);
 
   useEffect(() => {
     getApiWrapper('/auth/good/', (data: any) => {
@@ -48,10 +49,11 @@ function Home() {
         // TODO: Unnessecary setTimesouts are being created.
         // Find a solution to clear timeouts when fish is collected
         // and when a new fish is recieved.
-        setTimeout(() => {
+        const timeoutId = window.setTimeout(() => {
           setFish(null);
           document.title = 'Pond';
         }, millisecondsFishable);
+        setFishTimeoutId(timeoutId);
         setFish(newFish);
         document.title = 'New Fish!';
       } else {
@@ -68,6 +70,7 @@ function Home() {
 
   function collectFish() {
     if (fish) {
+      window.clearTimeout(fishTimeoutId);
       webSocket.emit('collect-fish', fish);
       setExp(exp + fish.expRewarded);
       // alert(`You caught a ${fish.name} and gained ${fish.expRewarded} exp!`);

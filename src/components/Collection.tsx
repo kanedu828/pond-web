@@ -15,7 +15,7 @@ function Fish(props: FishProps) {
     <div className="fish">
       <img
         className="fish-image"
-        src={require('../assets/images/fish/default_fish.png')}
+        src={require(`../assets/images/fish/${props.name.toLowerCase().replaceAll(' ', '_')}.png`)}
         alt="No Fish Image Available"
       ></img>
       <h3>{props.name}</h3>
