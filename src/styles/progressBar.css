@@ -1,0 +1,31 @@
+.progress-master-container {
+    margin: 25px;
+}
+
+.progress-bar-container {
+    height: 20px;
+    width: 40%;
+    background-color: #e0e0de;
+    border-radius: 50px;
+    margin: 10px 0px 10px 0px;
+}
+
+.progress-bar-filler {
+    height: 100%;
+    border-radius: inherit;
+    text-align: right;
+    transition: width 1s ease-in-out;
+    background-color: rgb(102, 180, 233);
+}
+
+.progress-bar-label {
+    padding: 5px;
+    color: white;
+    font-weight: bold;
+}
+
+.level {
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;
+}

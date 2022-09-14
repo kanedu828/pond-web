@@ -7,6 +7,8 @@ import '../styles/shared.css';
 import FishModal from './FishModal';
 import { motion } from 'framer-motion';
 import alertIcon from '../assets/images/icons/alert.svg';
+import ProgressBar from './ProgressBar';
+import { expToLevel, percentToNextLevel } from '../util/util';
 
 const webSocket = io(`${process.env.REACT_APP_POND_WS_URL}`, {
   withCredentials: true
@@ -86,6 +88,8 @@ function Home() {
 
   return (
     <div className="home-container">
+      <ProgressBar level={expToLevel(exp)} completed={percentToNextLevel(exp)}/>
+
       <FishModal isOpen={showFishModal} onRequestClose={finishCollectFish} fish={fish} />
       <div>Is Connected: {isConnected.toString()}</div>
       <div onClick={collectFish} className="fishing-container">
