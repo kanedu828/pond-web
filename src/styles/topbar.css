@@ -1,5 +1,4 @@
 .topbar-container {
-  background-color: #a6b7cc;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -13,7 +12,7 @@
 
 .topbar-button {
   border: none;
-  color: black;
+  color: rgb(0, 0, 0);
   margin: auto 30px auto 30px;
   font-size: 20px;
   padding: 8px;

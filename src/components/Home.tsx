@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { io } from 'socket.io-client';
 import { getApiWrapper } from '../util/apiUtil';
@@ -9,6 +9,8 @@ import { motion } from 'framer-motion';
 import alertIcon from '../assets/images/icons/alert.svg';
 import ProgressBar from './ProgressBar';
 import { expToLevel, percentToNextLevel } from '../util/util';
+import useSound from 'use-sound';
+import splashSound from '../assets/audio/splash.mp3';
 
 const webSocket = io(`${process.env.REACT_APP_POND_WS_URL}`, {
   withCredentials: true
@@ -21,6 +23,7 @@ function Home() {
   const [showFishModal, setShowFishModal] = useState(false);
   const navigate = useNavigate();
   const [fishTimeoutId, setFishTimeoutId] = useState(-1);
+  const [playSplashSound] = useSound(splashSound);
 
   useEffect(() => {
     getApiWrapper('/auth/good/', (data: any) => {
@@ -72,10 +75,10 @@ function Home() {
 
   function collectFish() {
     if (fish) {
+      playSplashSound();
       window.clearTimeout(fishTimeoutId);
       webSocket.emit('collect-fish', fish);
       setExp(exp + fish.expRewarded);
-      // alert(`You caught a ${fish.name} and gained ${fish.expRewarded} exp!`);
       setShowFishModal(true);
       document.title = 'Pond';
     }
@@ -87,29 +90,46 @@ function Home() {
   }
 
   return (
-    <div className="home-container">
-      <ProgressBar level={expToLevel(exp)} completed={percentToNextLevel(exp)}/>
+    <div className='home-container'>
+  
 
-      <FishModal isOpen={showFishModal} onRequestClose={finishCollectFish} fish={fish} />
-      <div>Is Connected: {isConnected.toString()}</div>
-      <div onClick={collectFish} className="fishing-container">
-        {fish ? (
-          <motion.div
-            animate={{
-              scale: [1, 1.2, 1]
-            }}
-            transition={{
-              repeat: Infinity,
-              duration: 1.3,
-              ease: 'easeInOut'
-            }}
-          >
-            <img className="fishing-alert" src={alertIcon} />
-          </motion.div>
-        ) : (
-          <></>
-        )}
+      <video autoPlay muted loop className={fish ? 'fishing-background hide' : 'fishing-background'}>
+        <source src={require('../assets/images/fishing-no-fish.mp4')}/>
+      </video>
+
+      <video autoPlay muted loop className={fish ? 'fishing-background' : 'fishing-background hide'}>
+        <source src={require('../assets/images/fishing-has-fish.mp4')}/>
+      </video>
+        
+      
+      <div className='info-container'>
+        <div onClick={collectFish} className='fishing-container'>
+          {fish ? (
+            <motion.div
+              animate={{
+                scale: [1, 1.2, 1]
+              }}
+              transition={{
+                repeat: Infinity,
+                duration: 1.3,
+                ease: 'easeInOut'
+              }}
+            >
+              <img className='fishing-alert' src={alertIcon} />
+            </motion.div>
+          ) : (
+            <></>
+          )}
+        </div>
+        <div className='exp-bar-container'>
+          <ProgressBar level={expToLevel(exp)} completed={percentToNextLevel(exp)}/>
+          <div className='connected-label'>Is Connected: {isConnected.toString()}</div>
+        </div>
+        
+        
       </div>
+      
+      <FishModal isOpen={showFishModal} onRequestClose={finishCollectFish} fish={fish} />
     </div>
   );
 }
