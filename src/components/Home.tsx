@@ -100,10 +100,12 @@ function Home() {
       <video autoPlay muted loop className={fish ? 'fishing-background' : 'fishing-background hide'}>
         <source src={require('../assets/images/fishing-has-fish.mp4')}/>
       </video>
-        
+      
+      <div className='click-container' onClick={collectFish}>
+      </div>
       
       <div className='info-container'>
-        <div onClick={collectFish} className='fishing-container'>
+        <div className='fishing-container'>
           {fish ? (
             <motion.div
               animate={{
