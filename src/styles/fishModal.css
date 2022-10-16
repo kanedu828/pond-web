@@ -1,10 +1,9 @@
 .fish-modal-container {
   position: absolute;
   inset: 40px;
-  border: 1px solid rgb(204, 204, 204);
   background-color: #ece2d0;
   overflow: auto;
-  border-radius: 4px;
+  border-radius: 10px;
   padding: 20px;
   outline: currentcolor none medium;
   width: 500px;
@@ -26,7 +25,7 @@
 .catch-fish-button {
   background-color: #d5b9b2;
   border: none;
-  border-radius: 50px;
+  border-radius: 10px;
   margin: 10px 0 0 0;
   padding: 15px;
 }

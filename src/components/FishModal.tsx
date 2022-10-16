@@ -34,7 +34,7 @@ export default function FishModal(props: FishModalProps) {
       <ReactModal
         isOpen={props.isOpen}
         shouldCloseOnOverlayClick={false}
-        className="fish-modal-container"
+        className={`fish-modal-container ${props.fish.rarity}`}
         preventScroll={false}
       >
         <CaughtFish fish={props.fish} />

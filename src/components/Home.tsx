@@ -11,6 +11,7 @@ import ProgressBar from './ProgressBar';
 import { expToLevel, percentToNextLevel } from '../util/util';
 import useSound from 'use-sound';
 import splashSound from '../assets/audio/splash.mp3';
+import alertSound from '../assets/audio/alert.mp3';
 
 const webSocket = io(`${process.env.REACT_APP_POND_WS_URL}`, {
   withCredentials: true
@@ -24,6 +25,7 @@ function Home() {
   const navigate = useNavigate();
   const [fishTimeoutId, setFishTimeoutId] = useState(-1);
   const [playSplashSound] = useSound(splashSound);
+  const [playAlertSound] = useSound(alertSound);
 
   useEffect(() => {
     getApiWrapper('/auth/good/', (data: any) => {
@@ -61,6 +63,7 @@ function Home() {
         setFishTimeoutId(timeoutId);
         setFish(newFish);
         document.title = 'New Fish!';
+        playAlertSound();
       } else {
         setFish(null);
       }
