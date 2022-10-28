@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import '../styles/login.css';
 import '../styles/shared.css';
 import { getApiWrapper } from '../util/apiUtil';
+import PondLogo from '../assets/images/icons/logo.png';
 
 export default function Login() {
   const navigate = useNavigate();
@@ -17,7 +18,11 @@ export default function Login() {
 
   return (
     <div className="container">
-      <h1> POND </h1>
+      <img className='pond-logo' src={PondLogo}></img>
+      <p className='pond-text'>
+        Leave this website to the side while you are on your PC! When you see or hear the alert,
+        click the screen to catch the fish! Log in with your Google account to get started.
+      </p>
       <a className="login-button" href="http://127.0.0.1:5000/auth/google">
         <img
           className="google-logo"
