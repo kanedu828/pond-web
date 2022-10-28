@@ -28,6 +28,13 @@ function Home() {
   const [playAlertSound] = useSound(alertSound);
 
   useEffect(() => {
+    const backgroundAudio = new Audio('../assets/audio/background.mp3');
+    backgroundAudio.loop = true;
+    backgroundAudio.play();
+    console.log("HELO");
+  }, []);
+
+  useEffect(() => {
     getApiWrapper('/auth/good/', (data: any) => {
       console.log(data);
       if (!data.authenticated) {
@@ -62,8 +69,8 @@ function Home() {
         }, millisecondsFishable);
         setFishTimeoutId(timeoutId);
         setFish(newFish);
-        document.title = 'New Fish!';
         playAlertSound();
+        document.title = 'New Fish!';
       } else {
         setFish(null);
       }
@@ -74,7 +81,7 @@ function Home() {
       webSocket.off('disconnect');
       webSocket.off('new-fish');
     };
-  }, []);
+  }, [playAlertSound]);
 
   function collectFish() {
     if (fish) {
