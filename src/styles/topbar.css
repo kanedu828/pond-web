@@ -8,6 +8,13 @@
   padding: 10px;
   position: fixed;
   width: 100vw;
+  z-index: 9999;
+}
+
+.topbar-background {
+  padding-bottom: 14px;
+  background-color: #fafafa;
+  border-bottom: 1px solid black;
 }
 
 .topbar-button {

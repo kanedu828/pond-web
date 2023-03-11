@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { io } from 'socket.io-client';
 import { getApiWrapper } from '../util/apiUtil';
@@ -12,6 +12,7 @@ import { expToLevel, percentToNextLevel } from '../util/util';
 import useSound from 'use-sound';
 import splashSound from '../assets/audio/splash.mp3';
 import alertSound from '../assets/audio/alert.mp3';
+import { Container } from '@mui/material';
 
 const webSocket = io(`${process.env.REACT_APP_POND_WS_URL}`, {
   withCredentials: true
@@ -26,6 +27,13 @@ function Home() {
   const [fishTimeoutId, setFishTimeoutId] = useState(-1);
   const [playSplashSound] = useSound(splashSound);
   const [playAlertSound] = useSound(alertSound);
+
+  // Playing alert sound
+  useEffect(() => {
+    if (fish != null) {
+      playAlertSound();
+    }
+  }, [fish, playAlertSound]);
 
   useEffect(() => {
     getApiWrapper('/auth/good/', (data: any) => {
@@ -63,7 +71,7 @@ function Home() {
         setFishTimeoutId(timeoutId);
         setFish(newFish);
         document.title = 'New Fish!';
-        playAlertSound();
+        // playAlertSound();
       } else {
         setFish(null);
       }
@@ -93,9 +101,7 @@ function Home() {
   }
 
   return (
-    <div className='home-container'>
-  
-
+    <Container disableGutters maxWidth={false}>
       <video autoPlay muted loop className={fish ? 'fishing-background hide' : 'fishing-background'}>
         <source src={require('../assets/images/fishing-no-fish.mp4')}/>
       </video>
@@ -104,8 +110,8 @@ function Home() {
         <source src={require('../assets/images/fishing-has-fish.mp4')}/>
       </video>
       
-      <div className='click-container' onClick={collectFish}>
-      </div>
+      <Container className='click-container' onClick={collectFish}>
+      </Container>
       
       <div className='info-container'>
         <div className='fishing-container'>
@@ -135,7 +141,11 @@ function Home() {
       </div>
       
       <FishModal isOpen={showFishModal} onRequestClose={finishCollectFish} fish={fish} />
-    </div>
+    </Container>
+  
+
+
+    
   );
 }
 

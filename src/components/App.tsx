@@ -6,6 +6,7 @@ import Login from './Login';
 import WithNav from './WithNav';
 import WithoutNav from './WithoutNav';
 import Modal from 'react-modal';
+import FishingNav from './FishingNav';
 
 Modal.setAppElement('#root');
 
@@ -17,8 +18,10 @@ function App() {
           <Route path="/login/" element={<Login />} />
         </Route>
         <Route element={<WithNav />}>
-          <Route path="/" element={<Home />} />
           <Route path="/collection" element={<Collection />} />
+        </Route>
+        <Route element={<FishingNav />}>
+          <Route path="/" element={<Home />} />
         </Route>
       </Routes>
     </div>

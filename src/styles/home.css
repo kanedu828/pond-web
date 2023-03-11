@@ -18,13 +18,30 @@
   z-index: -50;
 }
 
-.fishing-background {
-  position: fixed;
-  width: 100vw;
-  object-fit: fill;
-  z-index: -100;
-  top: 0;
+@media (max-aspect-ratio: 16/9) {
+  .fishing-background {
+    position: fixed;
+    width: 100vw;
+    object-fit: fill;
+    z-index: -100;
+    top: 0;
+    width: auto;
+    height: 100%;
+  }
 }
+
+@media (min-aspect-ratio: 16/9) {
+  .fishing-background {
+    position: fixed;
+    width: 100vw;
+    object-fit: fill;
+    z-index: -100;
+    top: 0;
+    width: 100%;
+    height: auto;
+  }
+}
+
 
 .hide {
   filter: opacity(0);

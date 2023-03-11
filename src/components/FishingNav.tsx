@@ -2,13 +2,13 @@ import React from 'react';
 import TopBar from './TopBar';
 import { Outlet } from 'react-router';
 
-const WithNav = () => {
+const FishingNav = () => {
   return (
     <>
-      <TopBar hasBackground={true}/>
+      <TopBar hasBackground={false}/>
       <Outlet />
     </>
   );
 };
 
-export default WithNav;
+export default FishingNav;

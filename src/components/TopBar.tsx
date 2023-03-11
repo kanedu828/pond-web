@@ -4,14 +4,18 @@ import '../styles/shared.css';
 import { getApiWrapper } from '../util/apiUtil';
 import { NavLink } from 'react-router-dom';
 
-export default function TopBar() {
+interface TopBarProps {
+  hasBackground: boolean;
+}
+
+export default function TopBar(props: TopBarProps) {
 
   function logOut() {
     getApiWrapper('/auth/logout/', (data: any) => {});
   }
 
   return (
-    <div className="topbar-container">
+    <div className={props.hasBackground ? "topbar-container topbar-background": "topbar-container"}>
       <NavLink className="topbar-button" to="/">
         Fishing
       </NavLink>

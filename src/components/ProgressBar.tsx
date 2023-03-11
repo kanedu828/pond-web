@@ -1,3 +1,4 @@
+import { Container } from '@mui/system';
 import React from 'react';
 import '../styles/progressBar.css';
 
@@ -13,8 +14,8 @@ function ProgressBar(props: ProgressBarProps) {
         width: `${completed}%`,
     }
     return (
-        <div className='progress-master-container'>
-            <span className='level'>
+        <Container>
+     <span className='level'>
                 Level {level}
             </span>
             <div className='progress-bar-container'>
@@ -24,7 +25,8 @@ function ProgressBar(props: ProgressBarProps) {
                             </span>
                         </div>
                     </div>
-        </div>
+        </Container>
+
 
         
     );
