@@ -9,6 +9,7 @@ export default function Login() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    document.title = 'Pond';
     getApiWrapper('/auth/good/', (data: any) => {
       if (data.authenticated) {
         navigate('/');

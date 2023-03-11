@@ -7,10 +7,14 @@ import WithNav from './WithNav';
 import WithoutNav from './WithoutNav';
 import Modal from 'react-modal';
 import FishingNav from './FishingNav';
+import { useEffect } from 'react';
 
 Modal.setAppElement('#root');
 
 function App() {
+  useEffect(() => {
+    document.title = 'Pond';
+  }, []);
   return (
     <div>
       <Routes>

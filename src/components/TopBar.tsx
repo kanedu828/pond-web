@@ -11,7 +11,7 @@ interface TopBarProps {
 export default function TopBar(props: TopBarProps) {
 
   function logOut() {
-    getApiWrapper('/auth/logout/', (data: any) => {});
+    getApiWrapper('/auth/logout/', (_data: any) => {});
   }
 
   return (

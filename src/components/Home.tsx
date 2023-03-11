@@ -71,7 +71,6 @@ function Home() {
         setFishTimeoutId(timeoutId);
         setFish(newFish);
         document.title = 'New Fish!';
-        // playAlertSound();
       } else {
         setFish(null);
       }
