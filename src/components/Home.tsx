@@ -56,6 +56,10 @@ function Home() {
       setIsConnected(false);
       alert('You have been disconnected by the server!');
     });
+    
+    webSocket.on("connect_error", (err) => {
+      console.log(`connect_error due to ${err.message}`);
+    });
 
     webSocket.on('new-fish', (newFish: any) => {
       const millisecondsFishable = newFish.expirationDate - Date.now();
