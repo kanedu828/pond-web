@@ -14,7 +14,7 @@ import splashSound from '../assets/audio/splash.mp3';
 import alertSound from '../assets/audio/alert.mp3';
 import { Container } from '@mui/material';
 
-const webSocket = io(process.env.REACT_APP_POND_WS_URL, {
+const webSocket = io(process.env.REACT_APP_POND_WS_URL || '', {
   withCredentials: true,
   rejectUnauthorized: false
 });
