@@ -15,7 +15,8 @@ import alertSound from '../assets/audio/alert.mp3';
 import { Container } from '@mui/material';
 
 const webSocket = io(`${process.env.REACT_APP_POND_WS_URL}`, {
-  withCredentials: true
+  withCredentials: true,
+  rejectUnauthorized: false
 });
 
 function Home() {
