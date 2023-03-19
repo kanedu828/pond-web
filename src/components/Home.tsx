@@ -17,7 +17,6 @@ import { Container } from '@mui/material';
 const webSocket = io(process.env.REACT_APP_POND_WS_URL || '', {
   withCredentials: true,
   rejectUnauthorized: false,
-  methods: ["GET", "POST"]
 });
 
 function Home() {
