@@ -18,7 +18,6 @@ const webSocket = io(process.env.REACT_APP_POND_WS_URL || '', {
   withCredentials: true,
   path: '/api',
   transports: ['websocket'],
-  rejectUnauthorized: false
 });
 
 function Home() {
