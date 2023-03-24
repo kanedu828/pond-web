@@ -3,6 +3,7 @@ import '../styles/collection.css';
 import '../styles/shared.css';
 import { getApiWrapper } from '../util/apiUtil';
 import Select from 'react-select';
+import { Container, Stack, Typography } from '@mui/material';
 
 interface FishProps {
   fish: FishInstance;
@@ -74,16 +75,15 @@ export default function Collection() {
   useEffect(() => {
     getApiWrapper('/user/fish/', (data: any) => {
       setUserFish(data);
-      console.log(data);
     });
   }, []);
 
   return (
-    <div>
-      <div className='collection-tools'>
-        <h3>Sort By:</h3>
+    <Container sx={{ my: 12 }} maxWidth={false}>
+      <Stack direction='row' justifyContent='center' alignItems='center'>
+        <h2>Sort By: </h2>
         <Select className='sort-selector' onChange={v => setSortValue(v ? v.value : 'id')} options={sortOptions}/>
-      </div>
+      </Stack>
       <div className="collection-container">
         {userFish.map((element) => (
           <Fish
@@ -92,7 +92,7 @@ export default function Collection() {
           />
         ))}
       </div>
-    </div>
+    </Container>
     
   );
 }

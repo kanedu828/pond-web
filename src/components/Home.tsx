@@ -40,7 +40,6 @@ function Home() {
 
   useEffect(() => {
     getApiWrapper('/auth/good/', (data: any) => {
-      console.log(data);
       if (!data.authenticated) {
         navigate('login');
       }
@@ -58,16 +57,10 @@ function Home() {
       setIsConnected(false);
       alert('You have been disconnected by the server!');
     });
-    
-    webSocket.on("connect_error", (err) => {
-      console.log(`connect_error due to ${err.message}`);
-    });
 
     webSocket.on('new-fish', (newFish: any) => {
       const millisecondsFishable = newFish.expirationDate - Date.now();
       if (millisecondsFishable > 0) {
-        console.log(newFish);
-
         // TODO: Unnessecary setTimesouts are being created.
         // Find a solution to clear timeouts when fish is collected
         // and when a new fish is recieved.

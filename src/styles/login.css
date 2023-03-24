@@ -1,5 +1,6 @@
 .google-logo {
-  width: 20px;
+  width: 30px;
+  height: 30px;
   margin-right: 5px;
 }
 
@@ -8,12 +9,15 @@
   flex-direction: row;
   border: 1px solid rgb(201, 201, 201);
   padding: 10px;
+  align-items: center;
   justify-content: center;
-  width: 200px;
+  height: 25px;
+  width: 300px;
   text-decoration: none;
   box-shadow: 1px 3px rgb(204, 204, 204);
-  border-radius: 5px;
   background-color: white;
+  border-radius: 5px;
+  font-size: 20px;
 }
 
 .login-button:visited {

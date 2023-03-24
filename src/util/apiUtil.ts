@@ -6,6 +6,6 @@ export function getApiWrapper(endpoint: string, func: (data: any) => void) {
     .then((res: any) => res.json())
     .then(func)
     .catch((err) => {
-      console.log(err);
+      // console.log(err);
     });
 }

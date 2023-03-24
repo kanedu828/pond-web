@@ -1,4 +1,5 @@
-import { Container, Paper, Stack, Typography } from '@mui/material';
+import { Box, Container, Link, Paper, Stack, Typography } from '@mui/material';
+import { textAlign } from '@mui/system';
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/login.css';
@@ -19,21 +20,24 @@ export default function Login() {
 
   return (
     <Container>
-      <Paper>
-      <Stack spacing={3} padding={10} justifyContent='center' alignItems='center'>
-        <Typography variant='h2'>Pond</Typography>
-        <Typography variant='subtitle1'>Welcome to Pond! Login with Google to get started</Typography>
+      <Stack spacing={5} justifyContent='center' alignItems='center'>
+        <Box component='img' sx={{ width: 700 }}src={require('../assets/images/pond-logo.png')}/>
+          
+          <h2>
+            Leave Pond open while you are studying, working, gaming, or just relaxing! Click your screen when you see and hear the cue and collect all kinds of fish!
+          </h2>
+            
+      
+        
         <a className="login-button" href={`${process.env.REACT_APP_POND_API_URL}/auth/google`}>
-            <img
-              className="google-logo"
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"
-            />
-            Login with Google
-          </a>
+              <img
+                className="google-logo"
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"
+              />
+              Continue with Google
+        </a>
+
       </Stack>
-      </Paper>
-
-
     </Container>
   );
 }
