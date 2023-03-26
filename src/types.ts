@@ -16,3 +16,24 @@ export interface SocketData {
   name: string;
   age: number;
 }
+
+export interface FishInstance {
+  active: boolean;
+  count: number;
+  description: string;
+  expRewarded: number;
+  fishId: number;
+  lengthRangeInCm: number[];
+  maxLength: number;
+  name: string;
+  pondUserId: number;
+  rarity: string;
+  secondsFishable: number;
+}
+
+export interface PondUser {
+  id: number;
+  username: string;
+  location: string;
+  exp: number;
+}

@@ -8,6 +8,7 @@ import WithoutNav from './WithoutNav';
 import Modal from 'react-modal';
 import FishingNav from './FishingNav';
 import { useEffect } from 'react';
+import Leaderboard from './Leaderboard';
 
 Modal.setAppElement('#root');
 
@@ -23,6 +24,9 @@ function App() {
         </Route>
         <Route element={<WithNav />}>
           <Route path="/collection" element={<Collection />} />
+        </Route>
+        <Route element={<WithNav />}>
+          <Route path="/leaderboard" element={<Leaderboard />} />
         </Route>
         <Route element={<FishingNav />}>
           <Route path="/" element={<Home />} />

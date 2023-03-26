@@ -22,6 +22,9 @@ export default function TopBar(props: TopBarProps) {
       <NavLink className="topbar-button" to="/collection">
         Collection
       </NavLink>
+      <NavLink className="topbar-button" to="/leaderboard">
+        Leaderboard
+      </NavLink>
       <NavLink onClick={logOut} className="topbar-button" to="/login">
         Logout
       </NavLink>

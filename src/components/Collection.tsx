@@ -4,23 +4,10 @@ import '../styles/shared.css';
 import { getApiWrapper } from '../util/apiUtil';
 import Select from 'react-select';
 import { Container, Stack, Typography } from '@mui/material';
+import { FishInstance } from '../types';
 
 interface FishProps {
   fish: FishInstance;
-}
-
-interface FishInstance {
-  active: boolean;
-  count: number;
-  description: string;
-  expRewarded: number;
-  fishId: number;
-  lengthRangeInCm: number[];
-  maxLength: number;
-  name: string;
-  pondUserId: number;
-  rarity: string;
-  secondsFishable: number;
 }
 
 function Fish(props: FishProps) {
