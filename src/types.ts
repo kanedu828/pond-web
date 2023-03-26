@@ -37,3 +37,16 @@ export interface PondUser {
   location: string;
   exp: number;
 }
+
+export interface LeaderboardRow {
+  id: number;
+  username: string;
+  location: string;
+  exp: number;
+  ranking: number;
+  level: number;
+  usernameData: {
+    username: string,
+    isClient: boolean
+  }
+}
