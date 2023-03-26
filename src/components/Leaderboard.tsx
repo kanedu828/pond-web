@@ -29,7 +29,7 @@ const LEADERBOARD_COLUMNS: GridColDef[] = [
     {
         field: 'level',
         headerName: 'Level',
-        renderCell: (params: GridRenderCellParams) => <Typography>{expToLevel(params.value)}</Typography>,
+        renderCell: (params: GridRenderCellParams) => <Typography>{params.value}</Typography>,
         width: 150
     },
     {
